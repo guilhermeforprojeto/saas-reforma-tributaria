@@ -1,0 +1,11 @@
+services:
+  calculadora:
+    build:
+      context: .
+      args:
+        RTC_REF: main   # troque por uma tag/commit para fixar a versão
+    image: calculadora-rtc:local
+    # Só no localhost: a calculadora não tem login. Exponha pelo seu backend, nunca direto.
+    ports:
+      - "127.0.0.1:8080:8080"
+    restart: unless-stopped
